@@ -1,9 +1,12 @@
 package com.epam.training;
 
-public class GreetingApp {
+import org.springframework.beans.factory.BeanNameAware;
+
+public class GreetingApp implements BeanNameAware {
 
     private final GreetingMessageService messageService;
     private final MessageView messageView;
+    private String beanName;
     
     public GreetingApp(GreetingMessageService messageService, MessageView messageView) {
         this.messageService = messageService;
@@ -12,7 +15,12 @@ public class GreetingApp {
     
     public void greet() {
         String message = messageService.getMessage();
-        messageView.display(message);        
+        messageView.display("[" + beanName + "] {" + hashCode() + "}" + message);        
+    }
+
+    public void setBeanName(String beanName) {
+        this.beanName = beanName;
+        
     }
 
 }

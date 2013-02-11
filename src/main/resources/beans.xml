@@ -11,7 +11,7 @@
     <property name="message" value="Let's have some lunch!"></property>
   </bean>
   
-  <bean id="greetingApp" class="com.epam.training.GreetingApp">
+  <bean class="com.epam.training.GreetingApp" scope="prototype">
     <constructor-arg ref="confMessageService" />
     <constructor-arg ref="consoleMessageView" />
   </bean>
