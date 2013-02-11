@@ -4,6 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
   <bean id="consoleMessageView" class="com.epam.training.simple.ConsoleMessageView" ></bean>
+  <bean id="loggerMessageView" class="com.epam.training.simple.LoggerMessageView"></bean>
   
   <bean id="staticMessageService" class="com.epam.training.simple.StaticGreetingMessageService"></bean>
   
@@ -13,6 +14,6 @@
   
   <bean class="com.epam.training.GreetingApp" scope="prototype">
     <constructor-arg ref="confMessageService" />
-    <constructor-arg ref="consoleMessageView" />
+    <constructor-arg ref="loggerMessageView" />
   </bean>
 </beans>
