@@ -3,7 +3,9 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:c="http://www.springframework.org/schema/c"
   xmlns:p="http://www.springframework.org/schema/p"
-  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  xmlns:util="http://www.springframework.org/schema/util"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 
   <bean id="consoleMessageView" class="com.epam.training.simple.ConsoleMessageView" ></bean>
   <bean id="loggerMessageView" class="com.epam.training.simple.LoggerMessageView"></bean>
@@ -16,7 +18,16 @@
     p:message="Let's have some lunch!"
   />
   
-  <bean class="com.epam.training.simple.SimpleGreetingApp" scope="prototype" 
+  <bean id="simpleGreeting" class="com.epam.training.simple.SimpleGreetingApp" scope="prototype" 
     c:messageService-ref="confMessageService" c:messageView-ref="stutterMessageView">
+  </bean>
+  
+  <bean id="multiGreeting" class="com.epam.training.simple.MultiGreetingApp" c:messagesService-ref="confMessageService">
+    <property name="views">
+      <util:list>
+        <ref bean="loggerMessageView"/>
+        <ref bean="stutterMessageView"/>
+      </util:list>
+    </property>
   </bean>
 </beans>

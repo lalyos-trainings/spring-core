@@ -4,8 +4,6 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.FileSystemResource;
 
-import com.epam.training.simple.SimpleGreetingApp;
-
 /**
  * Hello world!
  *
@@ -16,11 +14,8 @@ public class App
     {
         FileSystemResource resource = new FileSystemResource("src/main/resources/beans.xml");
         BeanFactory factory = new XmlBeanFactory(resource);
-        GreetingApp app1 = factory.getBean(SimpleGreetingApp.class);
+        GreetingApp app1 = factory.getBean("multiGreeting",GreetingApp.class);
         app1.greet();
-
-        GreetingApp app2 = factory.getBean(SimpleGreetingApp.class);
-        app2.greet();
         
     }
 }
