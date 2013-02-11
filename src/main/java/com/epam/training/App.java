@@ -13,7 +13,7 @@ public class App
     {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:beans.xml"); 
         
-        GreetingApp app1 = ctx.getBean("multiGreeting",GreetingApp.class);
+        GreetingApp app1 = ctx.getBean("simpleGreeting",GreetingApp.class);
         app1.greet();
         
     }

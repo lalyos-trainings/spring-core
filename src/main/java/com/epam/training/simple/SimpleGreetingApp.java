@@ -22,7 +22,7 @@ public class SimpleGreetingApp implements BeanNameAware, GreetingApp {
      */
     public void greet() {
         String message = messageService.getMessage();
-        messageView.display("[" + beanName + "] {" + hashCode() + "}" + message);        
+        messageView.display(message);        
     }
 
     public void setBeanName(String beanName) {

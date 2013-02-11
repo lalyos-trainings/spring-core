@@ -10,10 +10,20 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
   <context:property-placeholder location="greeting.properties"/>
+  
+  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
+    p:basename="messages" 
+  />
 
   <bean id="consoleMessageView" class="com.epam.training.simple.ConsoleMessageView" ></bean>
   <bean id="loggerMessageView" class="com.epam.training.simple.LoggerMessageView"></bean>
   <bean id="stutterMessageView" class="com.epam.training.simple.StutterMessageView" p:count="3" />
+  
+  <bean id="i18nMessageView" class="com.epam.training.simple.I18NMessageView" c:locale="${greeting.locale}"></bean>
+  
+  <bean id="goHomeMessageService" class="com.epam.training.simple.ConfigurableMessageService"
+    p:message="${greeting.code}" />
+  
   <bean id="staticMessageService" class="com.epam.training.simple.StaticGreetingMessageService"></bean>
   
   <bean 
@@ -23,7 +33,7 @@
   />
   
   <bean id="simpleGreeting" class="com.epam.training.simple.SimpleGreetingApp" scope="prototype" 
-    c:messageService-ref="confMessageService" c:messageView-ref="stutterMessageView">
+    c:messageService-ref="goHomeMessageService" c:messageView-ref="i18nMessageView">
   </bean>
   
   <bean id="multiGreeting" class="com.epam.training.simple.MultiGreetingApp" c:messagesService-ref="confMessageService">
