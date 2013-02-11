@@ -44,4 +44,8 @@
       </util:list>
     </property>
   </bean>
+  
+  
+  <bean class="com.epam.training.simple.MessageStatisticListener"
+  c:pricePerMessage="135" />
 </beans>
