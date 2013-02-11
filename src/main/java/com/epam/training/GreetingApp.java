@@ -1,27 +1,18 @@
 package com.epam.training;
 
-import com.epam.training.simple.ConsoleMessageView;
-import com.epam.training.simple.StaticGreetingMessageService;
-
 public class GreetingApp {
 
-    private GreetingMessageService messageService;
-    private MessageView messageView;
+    private final GreetingMessageService messageService;
+    private final MessageView messageView;
     
-    public GreetingApp() {
+    public GreetingApp(GreetingMessageService messageService, MessageView messageView) {
+        this.messageService = messageService;
+        this.messageView = messageView;        
     }
     
     public void greet() {
         String message = messageService.getMessage();
         messageView.display(message);        
-    }
-
-    public void setMessageService(GreetingMessageService messageService) {
-        this.messageService = messageService;
-    }
-
-    public void setMessageView(MessageView messageView) {
-        this.messageView = messageView;
     }
 
 }
