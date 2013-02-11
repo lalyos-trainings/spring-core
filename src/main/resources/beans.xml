@@ -4,8 +4,12 @@
   xmlns:c="http://www.springframework.org/schema/c"
   xmlns:p="http://www.springframework.org/schema/p"
   xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:context="http://www.springframework.org/schema/context"
   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+  <context:property-placeholder location="greeting.properties"/>
 
   <bean id="consoleMessageView" class="com.epam.training.simple.ConsoleMessageView" ></bean>
   <bean id="loggerMessageView" class="com.epam.training.simple.LoggerMessageView"></bean>
@@ -15,7 +19,7 @@
   <bean 
     id="confMessageService" 
     class="com.epam.training.simple.ConfigurableMessageService" 
-    p:message="Let's have some lunch!"
+    p:message="${greeting.message}"
   />
   
   <bean id="simpleGreeting" class="com.epam.training.simple.SimpleGreetingApp" scope="prototype" 
