@@ -5,16 +5,12 @@ import com.epam.training.simple.StaticGreetingMessageService;
 
 public class GreetingApp {
 
-    /**
-     * @param args
-     */
-    public static void main(String[] args) {
+    public void greet() {
         GreetingMessageService messageService = new StaticGreetingMessageService();
         MessageView messageView = new ConsoleMessageView();
         
         String message = messageService.getMessage();
-        messageView.display(message);
-
+        messageView.display(message);        
     }
 
 }
