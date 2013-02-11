@@ -28,8 +28,7 @@ public class SimpleGreetingApp implements BeanNameAware, GreetingApp, Applicatio
     public void greet() {
         String message = messageService.getMessage();
         messageView.display(message);
-        ApplicationEvent event = new ApplicationEvent(message) {
-        };
+        GreetingEvent event = new GreetingEvent(this, message, null);
         
         applicationContext.publishEvent(event);
         
