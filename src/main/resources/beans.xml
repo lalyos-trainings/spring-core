@@ -12,7 +12,7 @@
   </bean>
   
   <bean id="greetingApp" class="com.epam.training.GreetingApp">
-    <constructor-arg ref="confMessageService"></constructor-arg>
-    <constructor-arg ref="consoleMessageView"></constructor-arg>
+    <constructor-arg ref="confMessageService" />
+    <constructor-arg ref="consoleMessageView" />
   </bean>
 </beans>
