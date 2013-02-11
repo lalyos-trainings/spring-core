@@ -18,4 +18,12 @@ public class GreetingApp {
         messageView.display(message);        
     }
 
+    public void setMessageService(GreetingMessageService messageService) {
+        this.messageService = messageService;
+    }
+
+    public void setMessageView(MessageView messageView) {
+        this.messageView = messageView;
+    }
+
 }
