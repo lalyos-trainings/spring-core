@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:c="http://www.springframework.org/schema/c"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
   <bean id="consoleMessageView" class="com.epam.training.simple.ConsoleMessageView" ></bean>
   <bean id="loggerMessageView" class="com.epam.training.simple.LoggerMessageView"></bean>
-  
+  <bean id="stutterMessageView" class="com.epam.training.simple.StutterMessageView" p:count="3" />
   <bean id="staticMessageService" class="com.epam.training.simple.StaticGreetingMessageService"></bean>
   
-  <bean id="confMessageService" class="com.epam.training.simple.ConfigurableMessageService" >
-    <property name="message" value="Let's have some lunch!"></property>
-  </bean>
+  <bean 
+    id="confMessageService" 
+    class="com.epam.training.simple.ConfigurableMessageService" 
+    p:message="Let's have some lunch!"
+  />
   
-  <bean class="com.epam.training.GreetingApp" scope="prototype">
-    <constructor-arg ref="confMessageService" />
-    <constructor-arg ref="loggerMessageView" />
+  <bean class="com.epam.training.simple.SimpleGreetingApp" scope="prototype" 
+    c:messageService-ref="confMessageService" c:messageView-ref="stutterMessageView">
   </bean>
 </beans>
