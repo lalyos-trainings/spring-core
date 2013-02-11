@@ -14,7 +14,7 @@ public class App
     {
         FileSystemResource resource = new FileSystemResource("src/main/resources/beans.xml");
         BeanFactory factory = new XmlBeanFactory(resource);
-        GreetingApp app = factory.getBean("greetingApp", GreetingApp.class);
+        GreetingApp app = factory.getBean(GreetingApp.class);
         app.greet();
         
     }
