@@ -4,33 +4,31 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.MessageSource;
+import org.springframework.context.MessageSourceAware;
 
 import com.epam.training.MessageView;
 
-public class I18NMessageView implements MessageView, ApplicationContextAware {
+public class I18NMessageView implements MessageView, MessageSourceAware {
 
     private Logger logger = LoggerFactory.getLogger(I18NMessageView.class);
     private final Locale locale;
-    private ApplicationContext applicationContext;
+    private MessageSource messageSource;
     
     public I18NMessageView(Locale locale) {
         this.locale = locale;
     }
 
     public void display(String messageCode) {
-        logger.debug("messageCode: " + messageCode);
-        String message = applicationContext.getMessage(messageCode, null, locale);
-        logger.debug("message: " + message);
+        String message = messageSource.getMessage(messageCode, null, locale);
         
         logger.info(message);
 
     }
 
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
+    public void setMessageSource(MessageSource messageSource) {
+        this.messageSource = messageSource;
+        // TODO Auto-generated method stub
         
     }
 
