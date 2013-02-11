@@ -9,8 +9,6 @@ public class GreetingApp {
     private MessageView messageView;
     
     public GreetingApp() {
-        messageService = new StaticGreetingMessageService();
-        messageView = new ConsoleMessageView();
     }
     
     public void greet() {
