@@ -2,6 +2,7 @@ package com.epam.training.simple;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ApplicationEvent;
@@ -49,10 +50,12 @@ public class SimpleGreetingApp implements BeanNameAware, GreetingApp, Applicatio
         this.applicationContext = applicationContext;
     }
 
+    @Autowired
     public void setMessageService(GreetingMessageService messageService) {
         this.messageService = messageService;
     }
 
+    @Autowired
     public void setMessageView(MessageView messageView) {
         this.messageView = messageView;
     }
