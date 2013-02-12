@@ -8,7 +8,7 @@
   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd"
-    default-autowire="byName">
+    default-autowire="byType" >
 
   <context:property-placeholder location="greeting.properties"/>
   
@@ -18,8 +18,11 @@
   
   <bean id="i18nMessageView" name="messageView" class="com.epam.training.simple.I18NMessageView" c:locale="${greeting.locale}"></bean>
   
-  <bean id="goHomeMessageService" name="messageService" class="com.epam.training.simple.ConfigurableMessageService"
-    p:message="${greeting.code}" />
+  <bean id="goHomeMessageService"  class="com.epam.training.simple.ConfigurableMessageService"
+    p:message="${greeting.code}" autowire-candidate="false" />
+
+  <bean id="lunchMessageService" class="com.epam.training.simple.ConfigurableMessageService"
+    p:message="msg.lunch" />
   
   
   <bean id="simpleGreeting" class="com.epam.training.simple.SimpleGreetingApp" scope="prototype" 
