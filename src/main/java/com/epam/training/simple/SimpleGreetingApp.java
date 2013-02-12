@@ -22,9 +22,9 @@ public class SimpleGreetingApp implements BeanNameAware, GreetingApp, Applicatio
         this.messageView = messageView;        
     }
     
-    public SimpleGreetingApp() {
-        super();
-    }
+//    public SimpleGreetingApp() {
+//        super();
+//    }
 
     /* (non-Javadoc)
      * @see com.epam.training.simple.GreetingApp#greet()
