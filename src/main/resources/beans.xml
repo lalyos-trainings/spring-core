@@ -7,7 +7,8 @@
   xmlns:context="http://www.springframework.org/schema/context"
   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd"
+    default-autowire="byType">
 
   <context:property-placeholder location="greeting.properties"/>
   
@@ -22,7 +23,7 @@
   
   
   <bean id="simpleGreeting" class="com.epam.training.simple.SimpleGreetingApp" scope="prototype" 
-    p:messageService-ref="goHomeMessageService" p:messageView-ref="i18nMessageView">
+    >
   </bean>  
   
   <bean class="com.epam.training.simple.MessageStatisticListener"
