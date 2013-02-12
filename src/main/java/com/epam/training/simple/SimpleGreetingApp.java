@@ -12,8 +12,8 @@ import com.epam.training.MessageView;
 
 public class SimpleGreetingApp implements BeanNameAware, GreetingApp, ApplicationContextAware {
 
-    private final GreetingMessageService messageService;
-    private final MessageView messageView;
+    private  GreetingMessageService messageService;
+    private  MessageView messageView;
     private String beanName;
     private ApplicationContext applicationContext;
     
@@ -22,6 +22,10 @@ public class SimpleGreetingApp implements BeanNameAware, GreetingApp, Applicatio
         this.messageView = messageView;        
     }
     
+    public SimpleGreetingApp() {
+        super();
+    }
+
     /* (non-Javadoc)
      * @see com.epam.training.simple.GreetingApp#greet()
      */
@@ -41,6 +45,14 @@ public class SimpleGreetingApp implements BeanNameAware, GreetingApp, Applicatio
 
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
+    }
+
+    public void setMessageService(GreetingMessageService messageService) {
+        this.messageService = messageService;
+    }
+
+    public void setMessageView(MessageView messageView) {
+        this.messageView = messageView;
     }
 
 }

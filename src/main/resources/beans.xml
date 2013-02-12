@@ -22,7 +22,7 @@
   
   
   <bean id="simpleGreeting" class="com.epam.training.simple.SimpleGreetingApp" scope="prototype" 
-    c:messageService-ref="goHomeMessageService" c:messageView-ref="i18nMessageView">
+    p:messageService-ref="goHomeMessageService" p:messageView-ref="i18nMessageView">
   </bean>  
   
   <bean class="com.epam.training.simple.MessageStatisticListener"
