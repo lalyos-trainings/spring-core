@@ -14,7 +14,8 @@
   
   <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
     p:basename="messages" 
-  />
+  >
+  
   
   <bean id="i18nMessageView" name="messageView" class="com.epam.training.simple.I18NMessageView" c:locale="${greeting.locale}"></bean>
   
