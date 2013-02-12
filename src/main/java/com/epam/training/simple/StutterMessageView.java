@@ -1,7 +1,13 @@
 package com.epam.training.simple;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import com.epam.training.MessageView;
 
+@Component
+@Qualifier("multiview")
 public class StutterMessageView implements MessageView {
 
     private int count;
@@ -13,6 +19,7 @@ public class StutterMessageView implements MessageView {
 
     }
 
+    @Value("3")
     public void setCount(int count) {
         this.count = count;
     }

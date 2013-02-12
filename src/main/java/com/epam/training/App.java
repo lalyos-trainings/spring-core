@@ -19,7 +19,7 @@ public class App
             
         }
         
-        GreetingApp app1 = ctx.getBean(GreetingApp.class);
+        GreetingApp app1 = ctx.getBean("multiGreetingApp", GreetingApp.class);
         app1.greet();
         
     }
