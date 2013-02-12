@@ -8,31 +8,14 @@
   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd"
-    default-autowire="byType">
+   default-autowire="byName" >
 
+
+  <context:component-scan base-package="com.epam.training" />
   <context:property-placeholder location="greeting.properties"/>
   
   <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
-    p:basename="messages" 
-  />
-
-  <bean id="consoleMessageView" class="com.epam.training.simple.ConsoleMessageView" ></bean>
-  <bean id="loggerMessageView" class="com.epam.training.simple.LoggerMessageView"></bean>
-  <bean id="stutterMessageView" class="com.epam.training.simple.StutterMessageView" p:count="3" />
-  
-  <bean id="staticMessageService" class="com.epam.training.simple.StaticGreetingMessageService"></bean>
-  
-  <bean 
-    id="confMessageService" 
-    class="com.epam.training.simple.ConfigurableMessageService" 
-    p:message="${greeting.message}"
-  />
-    
-  <bean id="multiGreeting" class="com.epam.training.simple.MultiGreetingApp" c:messagesService-ref="confMessageService">
-    
-  </bean>
+    p:basename="messages" />
   
   
-  <bean class="com.epam.training.simple.MessageStatisticListener"
-  c:pricePerMessage="135" />
 </beans>

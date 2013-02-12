@@ -5,11 +5,13 @@ import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ApplicationEvent;
+import org.springframework.stereotype.Component;
 
 import com.epam.training.GreetingApp;
 import com.epam.training.GreetingMessageService;
 import com.epam.training.MessageView;
 
+@Component
 public class SimpleGreetingApp implements BeanNameAware, GreetingApp, ApplicationContextAware {
 
     private  GreetingMessageService messageService;
@@ -22,9 +24,9 @@ public class SimpleGreetingApp implements BeanNameAware, GreetingApp, Applicatio
         this.messageView = messageView;        
     }
     
-//    public SimpleGreetingApp() {
-//        super();
-//    }
+    public SimpleGreetingApp() {
+        super();
+    }
 
     /* (non-Javadoc)
      * @see com.epam.training.simple.GreetingApp#greet()
