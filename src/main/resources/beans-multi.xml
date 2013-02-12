@@ -14,16 +14,28 @@
   <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
     p:basename="messages" 
   />
+
+  <bean id="consoleMessageView" class="com.epam.training.simple.ConsoleMessageView" ></bean>
+  <bean id="loggerMessageView" class="com.epam.training.simple.LoggerMessageView"></bean>
+  <bean id="stutterMessageView" class="com.epam.training.simple.StutterMessageView" p:count="3" />
   
-  <bean id="i18nMessageView" class="com.epam.training.simple.I18NMessageView" c:locale="${greeting.locale}"></bean>
+  <bean id="staticMessageService" class="com.epam.training.simple.StaticGreetingMessageService"></bean>
   
-  <bean id="goHomeMessageService" class="com.epam.training.simple.ConfigurableMessageService"
-    p:message="${greeting.code}" />
+  <bean 
+    id="confMessageService" 
+    class="com.epam.training.simple.ConfigurableMessageService" 
+    p:message="${greeting.message}"
+  />
+    
+  <bean id="multiGreeting" class="com.epam.training.simple.MultiGreetingApp" c:messagesService-ref="confMessageService">
+    <property name="views">
+      <util:list>
+        <ref bean="loggerMessageView"/>
+        <ref bean="stutterMessageView"/>
+      </util:list>
+    </property>
+  </bean>
   
-  
-  <bean id="simpleGreeting" class="com.epam.training.simple.SimpleGreetingApp" scope="prototype" 
-    c:messageService-ref="goHomeMessageService" c:messageView-ref="i18nMessageView">
-  </bean>  
   
   <bean class="com.epam.training.simple.MessageStatisticListener"
   c:pricePerMessage="135" />
