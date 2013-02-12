@@ -2,6 +2,8 @@ package com.epam.training.simple;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -33,6 +35,11 @@ public class MultiGreetingApp implements GreetingApp {
     @Qualifier("multiview")
     public void setViews(List<MessageView> views) {
         this.views = views;
+    }
+    
+    @PostConstruct
+    public void init() {
+        System.out.println("reading from DB ...");
     }
 
 }
